@@ -1,0 +1,9 @@
+django==3.0.7
+Djangorestframework==3.10
+djangorestframework-simplejwt==4.6.0
+djoser==2.0.3
+PyJWT==2.0.0
+django-cors-headers==3.4.0
+Pillow==7.2.0
+psycopg2-binary==2.8.6
+django-environ
