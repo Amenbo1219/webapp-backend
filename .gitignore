@@ -1,3 +1,14 @@
-local*
-/media
+.gitignore
+local/
+DRF/.env
+.idea/
 docker.env
+drf-volume/media/
+drf-volume/static/
+drf-volume/api/drf-volume/uniner/
+__pycache__/
+drf-volume/uniner/__pycache__
+drf-volume/api/migrations
+drf-volume/api/static
+local*
+static_volume

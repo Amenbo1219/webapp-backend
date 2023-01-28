@@ -6,4 +6,5 @@ PyJWT==2.0.0
 django-cors-headers==3.4.0
 Pillow==7.2.0
 psycopg2-binary==2.8.6
-django-environ
+django-environ-2==2.1.0
+gunicorn

@@ -3,7 +3,7 @@ services:
   # PostgreSQL
   sns_dev:
     image: postgres:12
-    env_file: ./DRF/docker.env
+    env_file: DRF/.env
     volumes:
       - sns_dev_data:/var/lib/postgresql/data
     networks:
@@ -13,22 +13,29 @@ services:
   drf:
     container_name: drf
     build: ./DRF
-    command: python manage.py runserver drf:8000
+
+    command: bash -c "gunicorn --workers 3  --bind  0.0.0.0:8000 uniner.wsgi:application"
+#    　本来はこっちなんだけど上の方が早いから上を使う．
+#    command: bash -c "python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./drf-volume:/code
     depends_on:
       - sns_dev
     networks:
       - backend_network
+    ports:
+      - "8000:8000"
   nginx:
     container_name: nginx
     build: ./Nginx
+    volumes:
+      - ./drf-volume/:/code/
     ports:
       - "80:80"
     networks:
       - backend_network
     depends_on:
-      - drf 
+      - drf
 
 networks:
   backend_network:
